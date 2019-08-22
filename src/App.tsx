@@ -1,12 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import useHover from "./components/useHover";
+// import useHover2 from "./components/useHover2";
 
 const App: React.FC = () => {
+  const [hoverRef, isHovered] = useHover();
+  // const {ref: hoverRef, value: isHovered} = useHover2();
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo"/>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -18,9 +23,13 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
+
+        <div ref={hoverRef}>
+          {isHovered ? '😁' : '☹️'}
+        </div>
       </header>
     </div>
   );
-}
+};
 
 export default App;
